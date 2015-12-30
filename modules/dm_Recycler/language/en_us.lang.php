@@ -43,11 +43,13 @@ $mod_strings = array (
   'LBL_MR_RECYCLER_SUBPANEL_TITLE' => 'Recycler',
   'LBL_NEW_FORM_TITLE' => 'New Recycler',
   'LBL_BEAN_MODULE' => 'Module',
-  'LBL_BEAN_ID' => 'Deleted Record Id',
+  'LBL_BEAN_ID' => 'Deleted Record ID',
   'LBL_DM_RECYCLER_DM_RECYCLEDLINKS_FROM_DM_RECYCLER_TITLE' => 'Recycle Bin',
   'LBL_DM_RECYCLER_DM_RECYCLEDLINKS_FROM_DM_RECYCLEDLINKS_TITLE' => 'Recycled Relationships',
   'LBL_DELETE_ALL_BUTTON_LABEL' => 'Delete All',
   'LBL_PREVIEW_BUTTON' => 'Preview',
   'LBL_RESTORE_BUTTON_LABEL' => 'Restore',
-  'LBL_RESTORE_ALL_BUTTON_LABEL' => 'Restore All'
+  'LBL_RESTORE_ALL_BUTTON_LABEL' => 'Restore All',
+  'LBL_DATE_RESTORED' => 'Date Restored',
+  'LBL_RESTORED' => 'Restored',
 );

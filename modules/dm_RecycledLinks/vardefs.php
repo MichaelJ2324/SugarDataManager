@@ -160,6 +160,7 @@ $dictionary['dm_RecycledLinks'] = array(
             'source' => 'non-db',
         ),
         'bean_module' => array (
+			'required' => true,
             'name' => 'bean_module',
             'vname' => 'LBL_BEAN_MODULE',
             'type' => 'varchar',
@@ -197,6 +198,7 @@ $dictionary['dm_RecycledLinks'] = array(
             'readonly' => true
         ),
         'relationship' => array (
+			'required' => true,
             'name' => 'relationship',
             'vname' => 'LBL_RELATIONSHIP',
             'type' => 'varchar',
@@ -292,7 +294,7 @@ $dictionary['dm_RecycledLinks'] = array(
 			'bean_name' => 'dm_Recycler',
 			'side' => 'right',
 			'vname' => 'LBL_DM_RECYCLER_DM_RECYCLEDLINKS_FROM_DM_RECYCLEDLINKS_TITLE',
-			'id_name' => 'dm_recycler_id',
+			'id_name' => 'dm_recycledlinks_id',
 			'link-type' => 'one',
 		),
 		'dm_recycler_dm_recycledlinks_name' => array(

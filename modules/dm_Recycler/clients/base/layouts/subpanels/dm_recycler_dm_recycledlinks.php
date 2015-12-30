@@ -6,5 +6,6 @@ $viewdefs['dm_Recycler']['base']['layout']['subpanels']['components'][] = array 
   'context' => 
   array (
     'link' => 'dm_recycler_dm_recycledlinks',
+    'view' => 'subpanel-for-dm_recycler_dm_recycledlinks'
   ),
 );

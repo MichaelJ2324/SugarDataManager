@@ -3,8 +3,17 @@ $module_name = 'dm_Recycler';
 $viewdefs[$module_name]['base']['view']['record'] = array(
     'buttons' => array(
         array(
+            'type' => 'rowaction',
+            'event' => 'button:preview_button:click',
+            'name' => 'preview_button',
+            'label' => 'LBL_PREVIEW_BUTTON',
+            'acl_action' => 'view',
+            'showOn' => 'view',
+            'css_class' => 'btn',
+        ),
+        array(
             'type' => 'actiondropdown',
-            'name' => 'main_dropdown',
+            'name' => 'restore_dropdown',
             'primary' => true,
             'showOn' => 'view',
             'buttons' => array(
@@ -22,20 +31,28 @@ $viewdefs[$module_name]['base']['view']['record'] = array(
                     'label' => 'LBL_RESTORE_ALL_BUTTON_LABEL',
                     'acl_action' => 'edit',
                 ),
-				array(
-					'type' => 'rowaction',
-					'event' => 'button:delete_button:click',
-					'name' => 'delete_button',
-					'label' => 'LBL_DELETE_BUTTON_LABEL',
-					'acl_action' => 'delete',
-				),
-				array(
-					'type' => 'rowaction',
-					'event' => 'button:deleteAll_button:click',
-					'name' => 'deleteAll_button',
-					'label' => 'LBL_DELETE_ALL_BUTTON_LABEL',
-					'acl_action' => 'delete',
-				),
+            ),
+        ),
+        array(
+            'type' => 'actiondropdown',
+            'name' => 'delete_dropdown',
+            'primary' => true,
+            'showOn' => 'view',
+            'buttons' => array(
+                array(
+                    'type' => 'rowaction',
+                    'event' => 'button:delete_button:click',
+                    'name' => 'delete_button',
+                    'label' => 'LBL_DELETE_BUTTON_LABEL',
+                    'acl_action' => 'delete',
+                ),
+                array(
+                    'type' => 'rowaction',
+                    'event' => 'button:deleteAll_button:click',
+                    'name' => 'deleteAll_button',
+                    'label' => 'LBL_DELETE_ALL_BUTTON_LABEL',
+                    'acl_action' => 'delete',
+                ),
             ),
         ),
         array(
@@ -111,7 +128,15 @@ $viewdefs[$module_name]['base']['view']['record'] = array(
                     'name' => 'created_by_name',
                   ),
                 ),
-                'span' => 12,
+                'span' => 6,
+              ),
+              3 => array (
+                  'name' => 'date_restored',
+                  'comment' => 'Date record was restored',
+                  'studio' => true,
+                  'readonly' => true,
+                  'label' => 'LBL_DATE_RESTORED',
+                  'span' => 6,
               ),
             ),
           ),

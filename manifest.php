@@ -10,11 +10,10 @@ $manifest = array (
 	'type' => 'module',
 	'acceptable_sugar_versions' => array (
 		'regex_matches' => array(
-			'7\\.5\\.[0-1]$\\.[0-1]$',
-			'7\\.6\\.[0-1]$\\.[0-1]$',
-			'7\\.7\\.[0-1]$\\.[0-1]$',
+			'7\.5\.*.*',
+			'7\.6\.*.*',
+			'7\.7\.*.*',
 		),
-
 	),
 	'acceptable_sugar_flavors' => array(
 		'PRO',

@@ -180,7 +180,7 @@ $dictionary['dm_Duplicates'] = array(
             'module' => 'dm_DuplicateRules',
             'bean_name' => false,
             'vname' => 'LBL_DM_DUPLICATERULES_DM_DUPLICATES_FROM_DM_DUPLICATES_TITLE',
-            'id_name' => 'dm_duplicaterules_id',
+            'id_name' => 'dm_duplicates_id',
             'link-type' => 'many',
             'side' => 'left',
         )

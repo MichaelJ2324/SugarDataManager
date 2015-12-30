@@ -61,6 +61,7 @@ class dm_Recycler extends SugarBean {
         $query->from(BeanFactory::getBean("dm_Recycler"));
         $query->where()->equals('bean_module',$bean->module_name);
         $query->where()->equals('bean_id',$bean->id);
+        $query->where()->equals('deleted',0);
         $query->limit(1);
         $results = $query->execute();
         if (count($results)>0) {

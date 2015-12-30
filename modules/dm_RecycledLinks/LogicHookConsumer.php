@@ -9,11 +9,17 @@
 		{
 			global $sugar_config;
 
+			$related_id = $arguments['related_id'];
+			$relationship = $arguments['relationship'];
+			$related_module = $arguments['related_module'];
+			$RecycledRelationship = dm_RecycledLinks::retrieveRecycled($bean,$relationship,$related_id);
 			$RecycledRelationship           	  = BeanFactory::getBean("dm_RecycledLinks");
-			$RecycledRelationship->name           = $arguments['related_module']." related to {$bean->bean_module}: ".$bean->name;
-			$RecycledRelationship->relationship   = $arguments['relationship'];
-			$RecycledRelationship->related_module = $arguments['related_module'];
-			$RecycledRelationship->related_id     = $arguments['related_id'];
+			$RecycledRelationship->name           = $related_module." related to {$bean->module_name}: ".$bean->name;
+			$RecycledRelationship->relationship   = $relationship;
+			$RecycledRelationship->related_module = $related_module;
+			$RecycledRelationship->related_id     = $related_id;
+			$RecycledRelationship->bean_id 		  = $bean->id;
+			$RecycledRelationship->bean_module	  = $bean->module_name;
 			$RecycledRelationship->save();
 
 			$RecycledRecord = dm_Recycler::retrieveRecycled($bean);

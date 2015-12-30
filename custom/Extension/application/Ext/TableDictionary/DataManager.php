@@ -13,12 +13,12 @@ $dictionary["dm_duplicaterules_dm_duplicates"] = array (
 					'rhs_table' => 'dm_duplicaterules',
 					'rhs_key' => 'id',
 					'relationship_type' => 'many-to-many',
-					'join_table' => 'dm_duplicaterules_dm_duplicates_c',
-					'join_key_lhs' => 'dm_duplicaterules_dm_duplicatesdm_duplicates_ida',
-					'join_key_rhs' => 'dm_duplicaterules_dm_duplicatesdm_duplicaterules_idb',
+					'join_table' => 'dm_duplicaterules_dm_duplicates',
+					'join_key_lhs' => 'dm_duplicates_id',
+					'join_key_rhs' => 'dm_duplicaterules_id',
 				),
 		),
-	'table' => 'dm_duplicaterules_dm_duplicates_c',
+	'table' => 'dm_duplicaterules_dm_duplicates',
 	'fields' =>
 		array (
 			0 =>
@@ -42,13 +42,13 @@ $dictionary["dm_duplicaterules_dm_duplicates"] = array (
 				),
 			3 =>
 				array (
-					'name' => 'dm_duplicaterules_dm_duplicatesdm_duplicates_ida',
+					'name' => 'dm_duplicates_id',
 					'type' => 'varchar',
 					'len' => 36,
 				),
 			4 =>
 				array (
-					'name' => 'dm_duplicaterules_dm_duplicatesdm_duplicaterules_idb',
+					'name' => 'dm_duplicaterules_id',
 					'type' => 'varchar',
 					'len' => 36,
 				),
@@ -57,7 +57,7 @@ $dictionary["dm_duplicaterules_dm_duplicates"] = array (
 		array (
 			0 =>
 				array (
-					'name' => 'dm_duplicaterules_dm_duplicatesspk',
+					'name' => 'dm_duplicaterules_dm_duplicates_pk',
 					'type' => 'primary',
 					'fields' =>
 						array (
@@ -66,11 +66,11 @@ $dictionary["dm_duplicaterules_dm_duplicates"] = array (
 				),
 			1 =>
 				array (
-					'name' => 'dm_duplicaterules_dm_duplicates_ida1',
+					'name' => 'dm_duplicaterules_dm_duplicates_id',
 					'type' => 'index',
 					'fields' =>
 						array (
-							0 => 'dm_duplicaterules_dm_duplicatesdm_duplicates_ida',
+							0 => 'dm_duplicates_id',
 						),
 				),
 			2 =>
@@ -79,7 +79,7 @@ $dictionary["dm_duplicaterules_dm_duplicates"] = array (
 					'type' => 'alternate_key',
 					'fields' =>
 						array (
-							0 => 'dm_duplicaterules_dm_duplicatesdm_duplicaterules_idb',
+							0 => 'dm_duplicaterules_id',
 						),
 				),
 		),
