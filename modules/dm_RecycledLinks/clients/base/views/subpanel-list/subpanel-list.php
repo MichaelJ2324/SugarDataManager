@@ -11,29 +11,72 @@
  */
 $module_name = 'dm_RecycledLinks';
 $viewdefs[$module_name]['base']['view']['subpanel-list'] = array(
-  'panels' => 
-  array(
-    array(
-      'name' => 'panel_header',
-      'label' => 'LBL_PANEL_1',
-      'fields' =>
-      array(
-        array(
-          'label' => 'LBL_NAME',
-          'enabled' => true,
-          'default' => true,
-          'name' => 'name',
-          'link' => true,
-        ),
-        array(
-          'label' => 'LBL_DATE_MODIFIED',
-          'enabled' => true,
-          'default' => true,
-          'name' => 'date_modified',
-        ),
+  'panels' =>
+      array (
+          0 =>
+              array (
+                  'name' => 'panel_header',
+                  'label' => 'LBL_PANEL_1',
+                  'fields' => array (
+					  0 =>
+						  array (
+							  'label' => 'LBL_NAME',
+							  'enabled' => true,
+							  'default' => true,
+							  'name' => 'name',
+							  'link' => true,
+						  ),
+					  1 =>
+						  array (
+							  'name' => 'right_name',
+							  'label' => 'LBL_RIGHT_NAME',
+							  'enabled' => true,
+							  'readonly' => true,
+							  'default' => true,
+						  ),
+					  2 =>
+						  array (
+							  'name' => 'relationship',
+							  'label' => 'LBL_RELATIONSHIP',
+							  'enabled' => true,
+							  'readonly' => true,
+							  'default' => true,
+						  ),
+					  3 =>
+						  array (
+							  'name' => 'left_name',
+							  'label' => 'LBL_LEFT_NAME',
+							  'enabled' => true,
+							  'readonly' => true,
+							  'default' => true,
+						  ),
+					  4 =>
+						  array (
+							  'name' => 'date_entered',
+							  'label' => 'LBL_DATE_ENTERED',
+							  'enabled' => true,
+							  'readonly' => true,
+							  'default' => true,
+						  ),
+					  5 =>
+						  array (
+							  'name' => 'date_restored',
+							  'label' => 'LBL_DATE_RESTORED',
+							  'enabled' => true,
+							  'readonly' => true,
+							  'default' => true,
+						  ),
+					  6 =>
+						  array (
+							  'name' => 'restored',
+							  'label' => 'LBL_RESTORED',
+							  'enabled' => true,
+							  'readonly' => true,
+							  'default' => true,
+						  ),
+				  ),
+              ),
       ),
-    ),
-  ),
     'orderBy' => array(
         'field' => 'date_modified',
         'direction' => 'desc',

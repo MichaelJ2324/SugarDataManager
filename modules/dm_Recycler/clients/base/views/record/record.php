@@ -1,6 +1,6 @@
 <?php
-$module_name = 'dm_Recycler';
-$viewdefs[$module_name]['base']['view']['record'] = array(
+
+$viewdefs['dm_Recycler']['base']['view']['record'] = array(
     'buttons' => array(
         array(
             'type' => 'rowaction',
@@ -151,9 +151,7 @@ $viewdefs[$module_name]['base']['view']['record'] = array(
             'placeholders' => true,
             'fields' => 
             array (
-              0 => 'assigned_user_name',
-              1 => 'team_name',
-              2 => 
+              0 =>
               array (
                 'name' => 'date_modified_by',
                 'readonly' => true,

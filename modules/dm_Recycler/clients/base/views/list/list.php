@@ -25,7 +25,7 @@ $viewdefs[$module_name] = array (
 						),
 						2 => array (
 							'name' => 'bean_id',
-							'label' => 'LBL_BEAN_id',
+							'label' => 'LBL_BEAN_ID',
 							'default' => true,
 							'enabled' => true,
 						),

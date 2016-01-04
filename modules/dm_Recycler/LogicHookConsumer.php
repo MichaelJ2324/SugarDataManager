@@ -7,6 +7,10 @@
 
 		function recycle($bean, $event, $arguments)
 		{
+			if (strpos($bean->module_name,"dm_")===0){
+				return;
+			}
+
 			$RecycledRecord = dm_Recycler::retrieveRecycled($bean);
 			if ($RecycledRecord==false) {
 				dm_Recycler::recycleBean($bean);
