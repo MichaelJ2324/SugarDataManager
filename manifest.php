@@ -1,6 +1,6 @@
 <?php
 $manifest = array (
-	'key' => 'DMV1JAN2015',
+	'key' => 'DMV1JAN2016',
 	'name' => 'Sugar Data Manager',
 	'description' => 'Adds Recycle Bin, Data Pruning, and advanced Duplicate monitoring to SugarCRM',
 	'author' => 'Michael Russell',
@@ -29,54 +29,95 @@ $manifest = array (
 
 
 $installdefs = array(
-	'copy' => array(
-		0 => array(
-			'from' => '<basepath>/modules/dm_DataManager',
-			'to' => 'modules/dm_DataManager',
+	'id' => 'DataManager',
+	'administration' => array(
+		array(
+			'from' => '<basepath>/custom/Extension/modules/Administration/Ext/Administration/DataManager.php'
+		)
+	),
+	'beans' => array(
+		array(
+			'module' => 'dm_Recycler',
+			'class' => 'dm_Recycler',
+			'path' => 'modules/dm_Recycler/dm_Recycler.php',
+			'tab' => true,
 		),
-		1 => array(
+		array(
+			'module' => 'dm_RecycledLinks',
+			'class' => 'dm_RecycledLinks',
+			'path' => 'modules/dm_RecycledLinks/dm_RecycledLinks.php',
+			'tab' => false,
+		),
+		array(
+			'module' => 'dm_Duplicates',
+			'class' => 'dm_Duplicates',
+			'path' => 'modules/dm_Duplicates/dm_Duplicates.php',
+			'tab' => true,
+		),
+		array(
+			'module' => 'dm_DuplicateRules',
+			'class' => 'dm_DuplicateRules',
+			'path' => 'modules/dm_DuplicateRules/dm_DuplicateRules.php',
+			'tab' => true,
+		),
+		array(
+			'module' => 'dm_DedupeHashes',
+			'class' => 'dm_DedupeHashes',
+			'path' => 'modules/dm_DedupeHashes/dm_DedupeHashes.php',
+			'tab' => false,
+		)
+	),
+	'copy' => array(
+		array(
+				'from' => '<basepath>/modules/dm_DedupeHashes',
+				'to' => 'modules/dm_DedupeHashes',
+		),
+		array(
 			'from' => '<basepath>/modules/dm_DuplicateRules',
 			'to' => 'modules/dm_DuplicateRules',
 		),
-		2 => array(
+		array(
 			'from' => '<basepath>/modules/dm_Duplicates',
 			'to' => 'modules/dm_Duplicates',
 		),
-		3 => array(
+		array(
 			'from' => '<basepath>/modules/dm_RecycledLinks',
 			'to' => 'modules/dm_RecycledLinks',
 		),
-		4 => array(
+		array(
 			'from' => '<basepath>/modules/dm_Recycler',
 			'to' => 'modules/dm_Recycler',
 		),
-		5 => array(
-			'from' => '<basepath>/custom/Extension/application/Ext/Include/DataManager.php',
-			'to' => 'custom/Extension/application/Ext/Include/DataManager.php',
-		),
-		6 => array(
-			'from' => '<basepath>/custom/Extension/application/Ext/Language/en_us.DataManager.php',
-			'to' => 'custom/Extension/application/Ext/Language/en_us.DataManager.php',
-		),
-		7 => array(
-			'from' => '<basepath>/custom/Extension/application/Ext/LogicHooks/DataManager.php',
-			'to' => 'custom/Extension/application/Ext/LogicHooks/DataManager.php',
-		),
-		8 => array(
-			'from' => '<basepath>/custom/Extension/application/Ext/TableDictionary/DataManager.php',
-			'to' => 'custom/Extension/application/Ext/TableDictionary/DataManager.php',
-		),
-		9 => array(
-			'from' => '<basepath>/custom/Extension/modules/Administration/Ext/Administration/DataManager.php',
-			'to' => 'custom/Extension/modules/Administration/Ext/Administration/DataManager.php',
-		),
-		10 => array(
-			'from' => '<basepath>/custom/Extension/modules/Schedulers/Ext/ScheduledTasks/DataManager.php',
-			'to' => 'custom/Extension/modules/Schedulers/Ext/ScheduledTasks/DataManager.php',
-		),
-		11  => array(
-			'from' => '<basepath>/custom/Extension/modules/Schedulers/Ext/Language/en_us.DataManager.php',
-			'to' => 'custom/Extension/modules/Schedulers/Ext/Language/en_us.DataManager.php',
-		),
 	),
+	'hookdefs' => array(
+		array(
+			'from' => '<basepath>/custom/Extension/application/Ext/LogicHooks/DataManager.php',
+			'to_module' => 'application'
+		)
+	),
+	'language' => array(
+		array(
+			'from' => '<basepath>/custom/Extension/modules/Schedulers/Ext/Language/en_us.DataManager.php',
+			'to_module' => 'Schedulers',
+			'language' => 'en_us'
+		),
+		array(
+			'from' => '<basepath>/custom/Extension/application/Ext/Language/en_us.DataManager.php',
+			'to_module' => 'application',
+			'language' => 'en_us'
+		)
+	),
+	'relationships' => array (
+		array(
+			'meta_data' => '<basepath>/custom/metadata/dm_duplicaterules_dm_duplicates.php'
+		),
+		array(
+			'meta_data' => '<basepath>/custom/metadata/dm_recycler_dm_recycledlinks.php'
+		)
+	),
+	'scheduledefs' => array(
+		array(
+			'from' => '<basepath>/custom/Extension/modules/Schedulers/Ext/ScheduledTasks/DataManager.php'
+		)
+	)
 );

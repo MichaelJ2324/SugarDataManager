@@ -5,19 +5,19 @@ $admin_option_defs['Administration'] = array(
 		'recycler_config',
 		'Configure Recycler',
 		'Configure the recycler module.',
-		'#dm_DataManager/layout/configure/Recycler'
+		'javascript:parent.SUGAR.App.router.navigate("dm_Recycler/config", {trigger: true});'
 	),
 	'duplicate_config' => array(
 		'duplicate_config',
 		'Configure Duplicates Module',
 		'Configure the Duplicates Module',
-		'#dm_DataManager/layout/configure/Duplicates'
+		'javascript:parent.SUGAR.App.router.navigate("dm_Duplicates/config", {trigger: true});'
 	),
-	'dedupe_rules' => array(
-		'dedupe_rules',
+	'duplicate_rules' => array(
+		'duplicate_rules',
 		'Duplicate Rules',
 		'Configure the Duplicates Rules for the Duplicates module',
-		'#dm_DuplicatesRules'
+		'javascript:parent.SUGAR.App.router.navigate("dm_DuplicateRules", {trigger: true});'
 	)
 );
 $admin_group_header[] = array(

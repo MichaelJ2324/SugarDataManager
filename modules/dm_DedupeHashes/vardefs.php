@@ -1,0 +1,108 @@
+<?php
+
+
+$dictionary['dm_Dedupehashes'] = array(
+    'table' => 'dm_dedupehashes',
+    'audited' => true,
+    'activity_enabled' => false,
+    'duplicate_merge' => true,
+    'fields' => array (
+		'id' => array(
+			'name' => 'id',
+			'vname' => 'LBL_ID',
+			'type' => 'id',
+			'required' => true,
+			'reportable' => true,
+			'duplicate_on_record_copy' => 'no',
+			'comment' => 'Unique identifier',
+			'mandatory_fetch' => true,
+		),
+		'bean_id' => array (
+			'required' => true,
+			'name' => 'bean_id',
+			'vname' => 'LBL_BEAN_ID',
+			'type' => 'id',
+			'massupdate' => false,
+			'no_default' => false,
+			'comments' => '',
+			'help' => '',
+			'importable' => 'false',
+			'duplicate_merge' => 'enabled',
+			'duplicate_merge_dom_value' => '1',
+			'audited' => false,
+			'reportable' => true,
+			'unified_search' => false,
+			'merge_filter' => 'disabled',
+			'calculated' => false,
+			'len' => '36',
+			'size' => '20',
+			'default' => '',
+			'studio' => true,
+			'readonly' => true,
+			'mandatory_fetch' => true,
+		),
+		'dm_duplicaterule_id' => array(
+			'name' => 'dm_duplicaterule_id',
+			'rname' => 'name',
+			'id_name' => 'dm_duplicaterule_id',
+			'vname' => 'LBL_DM_DUPLICATERULE_ID',
+			'type' => 'id',
+			'table' => 'dm_duplicaterules',
+			'isnull' => false,
+			'dbType' => 'id',
+			'group' => 'rule_name',
+			'comment' => 'Duplicate Rule ID',
+			'massupdate' => false,
+			'duplicate_on_record_copy' => 'no',
+			'readonly' => true,
+		),
+		'dm_duplicaterules_dm_dedupehashes' => array(
+			'name' => 'dm_duplicaterules_dm_dedupehashes',
+			'type' => 'link',
+			'relationship' => 'dm_duplicaterules_dm_dedupehashes',
+			'vname' => 'LBL_DM_DUPLICATEFULES_DM_DEDUPEHASHES',
+			'link_type' => 'one',
+			'module' => 'dm_DuplicateRules',
+			'bean_name' => 'dm_DuplicateRules',
+			'source' => 'non-db',
+			'mandatory_fetch' => true,
+		),
+		'data_hash' => array (
+			'name' => 'data_hash',
+			'vname' => 'LBL_DATA_HASH',
+			'type' => 'varchar',
+			'dbType' => 'char',
+			'len' => 60,
+			'unified_search' => false,
+			'required' => true,
+			'duplicate_merge' => 'disabled',
+			'merge_filter' => 'selected',
+			'duplicate_on_record_copy' => 'no',
+			'readonly' => true,
+			'mandatory_fetch' => true,
+		),
+	),
+	'indices' => array(
+		'id' => array(
+			'name' => 'idx_' . preg_replace('/[^a-z_\-]/i', '', strtolower($module)) . '_pk',
+			'type' => 'primary',
+			'fields' => array('id')
+		)
+	),
+	'relationships' => array (
+		'dm_duplicaterules_dm_dedupehashes' => array(
+			'lhs_module' => 'dm_DuplicateRules',
+			'lhs_table' => 'dm_duplicaterules',
+			'lhs_key' => 'id',
+			'rhs_module' => $module,
+			'rhs_table' => strtolower($table_name),
+			'rhs_key' => 'dm_duplicaterule_id',
+			'relationship_type' => 'one-to-many'
+		),
+	),
+	'optimistic_locking' => true,
+	'unified_search' => false,
+	'duplicate_check' => array(
+		'enabled' => false,
+	)
+);
