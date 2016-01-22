@@ -42,8 +42,15 @@ class dm_DedupeHashes extends SugarBean {
 		return $results;
 	}
 
-	public static function hashValues(SugarBean $bean, array $values){
-
+	public static function hashValues(SugarBean $bean, array $fields,$sorted = false){
+		$values = array(
+			'module' => $bean->module_name
+		);
+		if (!$sorted) sort($fields);
+		foreach($fields as $key => $field){
+			$values[$field] = $bean->$field;
+		}
+		return sha1(serialize($values));
 	}
 	public static function deleteMany(array $hashes){
 		foreach($hashes as $hash){

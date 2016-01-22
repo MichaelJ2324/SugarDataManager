@@ -54,4 +54,16 @@ $mod_strings = array (
   'LBL_RESTORED' => 'Restored',
   'LBL_MASS_DELETE_WARNING' => 'Are you sure you want to delete selected record(s)? Deleting records from Recycle Bin, will permanently remove the records from the database so that the data is no longer stored on your instance.',
   'LBL_MASS_DELETE_ALL_WARNING' => 'Are you sure you want to delete selected record(s)? Deleting records from Recycle Bin, using <b>Delete All</b> method will permanently remove the records and relationships from the database so that the data is no longer stored on your instance.',
+
+
+  //config labels
+  'LBL_PURGE_AFTER_DAYS' => 'Purge Data After <i>X</i> Days',
+  'LBL_PURGE_MODULES' => 'Purge Enabled Modules',
+  'LBL_RECYCLER_MODULES' => 'Recycler Enabled Modules',
+  'LBL_RECYCLER_SYSTEM_CONFIG_TITLE' => 'Recycler Configuration',
+	'LBL_RECYCLER_SYSTEM_CONFIG_HELP' => 'Choose which modules should be monitored, so that deleted records and relationships are stored in the Recycle Bin. These Recycle Bin records, reference the deleted records in the system and allow you to Restore the record easily, or permanently remove the record if Purge is enabled for the module.',
+	'LBL_RECYCLER_PURGE_CONFIG_TITLE' => 'Purge Configuration',
+	'LBL_RECYCLER_PURGE_CONFIG_HELP' => 'Typically deleted records in SugarCRM, remain in the database with a flag set to deleted. The Purge feature provides you with the ability to completely remove the data from the database in order to save space in your environment. Enabled the modules for which deleted records can be permanently deleted, and configure the age of deleted records in days in which the scheduler should automatically remove those records.',
+	'LBL_RECYCLER_DEFAULT_OWNER_TYPE' => 'Recycled Record Default Owner',
+  	'LBL_RECYCLER_DEFAULT_TEAM_TYPE' => 'Recycled Record Default Team(s)',
 );

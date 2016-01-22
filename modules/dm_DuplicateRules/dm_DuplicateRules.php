@@ -7,16 +7,6 @@ class dm_DuplicateRules extends SugarBean {
 	public $object_name = 'dm_DuplicateRules';
 	public $table_name = 'dm_duplicaterules';
 	public $importable = false;
-	public $team_id;
-	public $team_set_id;
-	public $team_count;
-	public $team_name;
-	public $team_link;
-	public $team_count_link;
-	public $teams;
-	public $assigned_user_id;
-	public $assigned_user_name;
-	public $assigned_user_link;
 	public $id;
 	public $name;
 	public $date_entered;

@@ -4,7 +4,7 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
 
 require_once 'clients/base/api/ModuleApi.php';
 
-class RecyclerAPI extends ModuleApi
+class RecyclerApi extends ModuleApi
 {
 	public function registerApiRest()
 	{
@@ -67,7 +67,7 @@ class RecyclerAPI extends ModuleApi
 	}
 
 	/**
-	 * Method to be used for my MyEndpoint/GetExample endpoint
+	 * Restore should merely look for Restore property to be set on the model. Restored is the boolean field to be checked after restore is complete, but simply set Restore (no d) on the model and pass it to the standard PUT request for Recycler module.
 	 */
 	public function restore($api, $args)
 	{

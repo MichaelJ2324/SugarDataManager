@@ -23,7 +23,7 @@ $manifest = array (
 	),
 	'readme' => '',
   	'icon' => '',
-	'remove_tables' => '',
+	'remove_tables' => 'prompt',
 );
 
 

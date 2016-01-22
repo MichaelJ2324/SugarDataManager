@@ -1,3 +1,8 @@
-/**
- * Created by mrussell on 1/13/16.
- */
+({
+    extendsFrom: 'BaseEnumField',
+
+    initialize: function(options){
+        console.log("Module Field List field.");
+        this.super('initialize',[options]);
+    }
+})

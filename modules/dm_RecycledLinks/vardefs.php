@@ -394,10 +394,23 @@ $dictionary['dm_RecycledLinks'] = array(
             'rhs_key' => 'created_by',
             'relationship_type' => 'one-to-many'
         ),
+		strtolower($module) . '_assigned_user' => array(
+			'lhs_module' => 'Users',
+			'lhs_table' => 'users',
+			'lhs_key' => 'id',
+			'rhs_module' => $module,
+			'rhs_table' => strtolower($module),
+			'rhs_key' => 'assigned_user_id',
+			'relationship_type' => 'one-to-many'
+		),
     ),
     'optimistic_locking' => true,
     'unified_search' => false,
     'duplicate_check' => array(
         'enabled' => false,
-    )
+    ),
+	'uses' => array(
+			'assignable',
+			'team_security'
+	)
 );

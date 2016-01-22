@@ -53,4 +53,14 @@ $mod_strings = array (
   'LBL_MODULE' => 'Module',
   'LBL_DM_DUPLICATERULES_DM_DUPLICATES_FROM_DM_DUPLICATES_TITLE' => 'Duplicates',
   'LBL_DM_DUPLICATERULES_DM_DUPLICATES_FROM_DM_DUPLICATERULES_TITLE' => 'Duplicate Rules',
+
+  //Config Menu Labels
+  'LBL_DUPLICATES_SYSTEM_CONFIG_TITLE' => 'Duplicates Configuration',
+  'LBL_DUPLICATES_SYSTEM_CONFIG_HELP' => 'Configure the system settings, for how duplicate records should be handled. When duplicates are found, a record is created in the duplicate module for review. Configure the User and Team settings to best allow for your duplicates to get cleaned up by the proper Users.',
+  'LBL_DUPLICATES_MERGE_CONFIG_TITLE' => 'Merge Configuration',
+  'LBL_DUPLICATES_MERGE_CONFIG_HELP' => 'Enabled Auto-merging of duplicate records on specified modules. Auto-merging works, by using the Primary record (typically first record with that data in the system) as the base set of data, and merging any new data from the duplicates that may not exist on the Primary record.',
+  'LBL_DUPLICATES_DEFAULT_OWNER_TYPE' => 'Duplicate Default Owner',
+  'LBL_DUPLICATES_DEFAULT_TEAM_TYPE' => 'Duplicate Default Team(s)',
+  'LBL_MERGE_MODULES' => 'Auto-Merge Enabled Modules',
+
 );
