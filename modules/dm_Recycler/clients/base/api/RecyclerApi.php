@@ -71,8 +71,32 @@ class RecyclerApi extends ModuleApi
 	 */
 	public function restore($api, $args)
 	{
-		//custom logic
-		return $args;
+
+        if(empty($args['bean_module'])) {
+            throw new SugarApiException("Missing Bean Module Parameter", null, null, 422, 'invalid_parameter');
+        }
+
+        if (empty($args['bean_id'])) {
+            throw new SugarApiException("Missing Bean ID Parameter", null, null, 422, 'invalid_parameter');
+        }
+
+		//Restore recycled record
+        $bean = BeanFactory::newBean($args['bean_module']);
+
+		$beanTableName = $bean->table_name;
+		//TODO: lazy... better way? bean doesnt work, api doesnt work, SugarQuery doesnt do updates yet... also SQL Injection much?
+		//TODO: Add date_modified
+        $results = $GLOBALS['db']->query("UPDATE $beanTableName SET deleted=0 WHERE id='{$args['bean_id']}'");
+
+		if($results){
+			return $results;
+		}else{
+			$GLOBALS['log']->fatal($GLOBALS['db']->lastError());
+			return array(
+				'error' => "1",
+				'error_message' => "An error has occured. Please check SugarCRM and PHP error Logs."
+			);
+		}
 	}
 	public function restoreAll($api, $args)
 	{
