@@ -87,7 +87,7 @@ class dm_Recycler extends SugarBean {
             $GLOBALS['log']->fatal("Recycler: Module bean not found! ".$this->bean_module." record: ".$this->bean_id);
             return false;
         }
-		$ModuleBean->mark_undeleted($id);
+		$ModuleBean->mark_undeleted($ModuleBean->id);
         unset($ModuleBean);
 
         //All supported dbs have affected_rows, but lets check just to be sure
