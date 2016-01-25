@@ -107,3 +107,6 @@ $app_strings['LBL_DM_DATAMANAGER_ENABLED_MODULES'] = 'Enabled Modules';
 $app_strings['LBL_DM_DATAMANAGER_DEFAULT_OWNER_TYPE'] = 'Default Owner Setup';
 $app_strings['LBL_DM_DATAMANAGER_DEFAULT_TEAM_TYPE'] = 'Default Team Setup';
 $app_strings['LBL_DM_DATAMANAGER_PURGE_AFTER_DAYS'] = 'Purge Data After <i>X</i> Days';
+
+$app_strings['LBL_DM_DATAMANAGER_RECORD_RESTORE_FAILURE'] = 'An error has occured. Please check SugarCRM and PHP error Logs.';
+$app_strings['LBL_DM_DATAMANAGER_RECORD_RESTORE_SUCCESS'] = 'Record restore complete.';
