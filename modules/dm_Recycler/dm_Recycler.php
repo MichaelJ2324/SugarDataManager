@@ -79,15 +79,41 @@ class dm_Recycler extends SugarBean {
 		$RecycledRecord->save();
 		return $RecycledRecord;
     }
+
 	public function restore(){
 		$GLOBALS['log']->info("Restoring ".$this->bean_module." record: ".$this->bean_id);
-        $ModuleBean = BeanFactory::retrieveBean($this->bean_module, $this->bean_id, array('disable_row_level_security' => true,'deleted'=>true));
-		$ModuleBean->deleted = false;
-        $ModuleBean->save();
-        $this->restored = true;
-		$this->restore_date = gmdate('Y-m-d H:i:s');;
-        $this->save();
-		unset($ModuleBean);
+        $ModuleBean = BeanFactory::retrieveBean($this->bean_module, $this->bean_id, array('disable_row_level_security' => true),false);
+        if(!isset($ModuleBean)){
+            $GLOBALS['log']->fatal("Recycler: Module bean not found! ".$this->bean_module." record: ".$this->bean_id);
+            return false;
+        }
+		$ModuleBean->mark_undeleted($id);
+        unset($ModuleBean);
+
+        //All supported dbs have affected_rows, but lets check just to be sure
+        if(isset($this->db->capabilities["affected_rows"]) && $this->db->capabilities["affected_rows"] == true){
+            $ModuleBeanResult = $this->db->getAffectedRowCount();
+        }else{
+            $ModuleBeanResult = 1;
+        }
+
+        if($ModuleBeanResult > 0){
+            $this->restored = true;
+            $this->restore_date = gmdate('Y-m-d H:i:s');;
+            $results = $this->save();
+
+            if($results){
+                return true;
+            }else{
+                $GLOBALS['log']->fatal("Recycler: Failed to update Recycler record. Record: ".$this->id);
+                return false;
+            }
+
+        }else{
+            $GLOBALS['log']->fatal("Recycler: Failed to undelete record. ".$this->bean_module." record: ".$this->bean_id);
+            return false;
+        }
+		
 	}
 
     public function purge(){

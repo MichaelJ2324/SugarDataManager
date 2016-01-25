@@ -1,10 +1,6 @@
 ({
     extendsFrom: 'RecordView',
 
- //    events: {
-	// 	'click *' : 'preventClick'
-	// },
-
     initialize: function(options){
         console.log("dm_Recycler Record View Initialization.");
         this._super("initialize",[options]);
@@ -48,12 +44,9 @@
                     });
                 } else {
                     //Record has been restored
-                    self.model.set("restored",1);
-                    //TODO: Add date_restored
-                    self.model.save();
                     app.alert.show('Recycler_restoreRecordComplete', {
                         level: 'info',
-                        messages: "Record restore complete.",
+                        messages: data.message,
                         autoClose: true
                     });
                 }
