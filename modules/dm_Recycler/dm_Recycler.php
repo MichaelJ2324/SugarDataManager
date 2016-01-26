@@ -87,15 +87,38 @@ class dm_Recycler extends SugarBean {
             $GLOBALS['log']->fatal("Recycler: Module bean not found! ".$this->bean_module." record: ".$this->bean_id);
             return false;
         }
-		$ModuleBean->mark_undeleted($ModuleBean->id);
-        unset($ModuleBean);
+		// $ModuleBean->mark_undeleted($ModuleBean->id);
+        $ModuleBeanResult = $this->unmarkDeletedRecord($ModuleBean, array("id"=>$ModuleBean->id), true);
 
-        //All supported dbs have affected_rows, but lets check just to be sure
-        if(isset($this->db->capabilities["affected_rows"]) && $this->db->capabilities["affected_rows"] == true){
-            $ModuleBeanResult = $this->db->getAffectedRowCount();
-        }else{
-            $ModuleBeanResult = 1;
+        if($ModuleBean->isFavoritesEnabled() == true){
+            //unDelete Favorite Records
+            $FavoritesBean = BeanFactory::newBean("SugarFavorites");
+            $FavoritesResult = $this->unmarkDeletedRecord(
+                $ModuleBean, 
+                array(
+                    "module" => $ModuleBean->module_name,
+                    "record_id" => $ModuleBean->id,
+                ), 
+                true,
+                $FavoritesBean->getTableName()
+            );
         }
+
+        if($ModuleBean->isActivityEnabled() == true){
+            //unDelete Activity Records
+            // $ActivityBean = BeanFactory::newBean("Activities");
+            $ActivityResult = $this->unmarkDeletedRecord(
+                $ModuleBean, 
+                array(
+                    "parent_type" => $ModuleBean->module_name,
+                    "parent_id" => $ModuleBean->id,
+                ), 
+                true,
+                "activities_users"
+            );
+        }
+
+        unset($ModuleBean);
 
         if($ModuleBeanResult > 0){
             $this->restored = true;
@@ -124,6 +147,43 @@ class dm_Recycler extends SugarBean {
             $this->db->query("DELETE FROM {$this->table_name} WHERE id='{$this->id}'");
         }
         unset($ModuleBean);
+    }
+
+    /**
+     * Generic method for un-deleting records of all types
+     *
+     * @param SugarBean $parentBean Parent bean module to get field definitions from
+     * @param array $where_data Array of fields to filter on in the where clause
+     * @param bool $updateDateModified Boolean to indicate if the date_modified should be updated in the query or not
+     * @param string $tableName Table name to run the query from. If excluded will use the parentBean->table_name passed
+     * @return Array $results Results of query
+     *
+     */
+    private function unmarkDeletedRecord($parentBean, $where_data, $updateDateModified = false, $tableName = ""){
+
+        if($tableName == "") $tableName = $parentBean->getTableName();
+        $usePreparedStatements = false;
+
+        $dataFields['deleted'] = $parentBean->getFieldDefinition('deleted');
+        $dataValues['deleted'] = '0';
+        
+        if($updateDateModified){
+            $dataFields['date_modified'] = $parentBean->getFieldDefinition('date_modified');
+            $dataValues['date_modified'] = $this->db->timedate->nowDb();            
+        }
+
+        $sql = $this->db->updateParams($tableName, $dataFields, $dataValues, $where_data, null, false, $usePreparedStatements);
+        $sqlResults = $this->db->query($sql);
+
+        //All supported dbs have affected_rows, but lets check just to be sure
+        if(isset($this->db->capabilities["affected_rows"]) && $this->db->capabilities["affected_rows"] == true){
+            $unDeletedResults = $this->db->getAffectedRowCount($sqlResults);
+        }else{
+            $unDeletedResults = 1;
+        }
+
+        return $unDeletedResults;
+
     }
 
 }
