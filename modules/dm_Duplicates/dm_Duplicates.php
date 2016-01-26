@@ -29,6 +29,9 @@ class dm_Duplicates extends SugarBean {
 	public $created_by_link;
 	public $modified_user_link;
 	public $module;
+
+	protected static $_config;
+
 	/**
 	 * This is a deprecated method, please start using __construct() as this
 	 * method will be removed in a future version.
@@ -51,6 +54,12 @@ class dm_Duplicates extends SugarBean {
 		}
 		return false;
 	}
-
+	public static function config(){
+		if (empty(static::$_config)){
+			$adminBean = BeanFactory::getBean("Administration");
+			static::$_config = $adminBean->getConfigForModule('dm_Duplicates','base');
+		}
+		return static::$_config;
+	}
 	
 }

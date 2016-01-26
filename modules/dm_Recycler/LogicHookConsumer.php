@@ -10,16 +10,18 @@
 			if (strpos($bean->module_name,"dm_")===0){
 				return;
 			}
-
-			$RecycledRecord = dm_Recycler::retrieveRecycled($bean);
-			if ($RecycledRecord==false) {
-				dm_Recycler::recycleBean($bean);
+			$config = dm_Recycler::config();
+			if (in_array($bean->module_name,$config['recycler_modules'])){
+				$RecycledRecord = dm_Recycler::retrieveRecycled($bean);
+				if ($RecycledRecord == FALSE) {
+					dm_Recycler::recycleBean($bean);
+				}
 			}
 		}
 
 		function purge($bean,$event,$arguments){
-			global $sugar_config;
-			if (in_array($bean->bean_module,$sugar_config['dm_config']['purge_modules'])){
+			$config = dm_Recycler::config();
+			if (in_array($bean->bean_module,$config['purge_modules'])){
 				$bean->purge();
 			}
 		}

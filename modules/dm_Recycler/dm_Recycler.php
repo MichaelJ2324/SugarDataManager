@@ -33,6 +33,8 @@ class dm_Recycler extends SugarBean {
     public $restored;
     public $restore_date;
 
+    protected static $_config;
+
     /**
      * This is a deprecated method, please start using __construct() as this
      * method will be removed in a future version.
@@ -54,6 +56,14 @@ class dm_Recycler extends SugarBean {
             case 'ACL': return true;
         }
         return false;
+    }
+
+    public static function config(){
+        if (empty(static::$_config)){
+            $adminBean = BeanFactory::getBean("Administration");
+            static::$_config = $adminBean->getConfigForModule('dm_Recycler','base');
+        }
+        return static::$_config;
     }
 	public static function retrieveRecycled(SugarBean $bean){
         $query = new SugarQuery();
