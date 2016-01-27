@@ -5,13 +5,14 @@ $viewdefs['dm_Recycler']['base']['view']['config-purge'] = array(
 		array(
 			'fields' => array(
 				array(
-					'name' => 'purge_enabled',
+					'name' => 'purge_modules',
 					'type' => 'enum',
 					'isMultiSelect' => true,
 					'label' => 'LBL_DM_DATAMANAGER_ENABLED_MODULES',
 					'options' => 'dm_moduleList',
 					'default' => false,
 					'enabled' => true,
+					'view' => 'edit'
 				),
 				array(
 					'name' => 'purge_after_days',
@@ -19,7 +20,8 @@ $viewdefs['dm_Recycler']['base']['view']['config-purge'] = array(
 					'type' => 'int',
 					'minRange' => 0,
 					'maxRange' => 120,
-					'enabled' => true
+					'enabled' => true,
+					'view' => 'edit'
 				)
 			)
 		),

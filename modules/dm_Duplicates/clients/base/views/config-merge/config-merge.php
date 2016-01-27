@@ -13,6 +13,7 @@ $viewdefs['dm_Duplicates']['base']['view']['config-merge'] = array(
 					'options' => 'dm_moduleList',
 					'default' => false,
 					'enabled' => true,
+					'view' => 'edit'
 				),
 			)
 		),

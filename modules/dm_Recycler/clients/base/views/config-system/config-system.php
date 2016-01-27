@@ -10,31 +10,35 @@ $viewdefs['dm_Recycler']['base']['view']['config-system'] = array(
 					'isMultiSelect' => true,
 					'label' => 'LBL_DM_DATAMANAGER_ENABLED_MODULES',
 					'options' => 'dm_moduleList',
-					'enabled' => true
+					'enabled' => true,
+					'view' => 'edit'
 				),
 				array(
 					'name' => 'default_owner_type',
 					'type' => 'enum',
 					'label' => 'LBL_DM_DATAMANAGER_DEFAULT_OWNER_TYPE',
 					'options' => 'dm_conf_owner',
-					'enabled' => true
+					'enabled' => true,
+					'view' => 'edit'
 				),
 				array(
-					'name' => 'owner_user',
+					'name' => 'assigned_user',
 					'type' => 'relate',
 					'label' => 'LBL_ASSIGNED_TO_NAME',
 					'enabled' => true,
 					'rname' => 'name',
 					'id_name' => 'default_user_id',
 					'module' => 'Users',
-					'link' => true
+					'link' => true,
+					'view' => 'edit'
 				),
 				array(
 					'name' => 'default_team_type',
 					'type' => 'enum',
 					'label' => 'LBL_DM_DATAMANAGER_DEFAULT_TEAM_TYPE',
 					'options' => 'dm_conf_team',
-					'enabled' => true
+					'enabled' => true,
+					'view' => 'edit'
 				),
 				array(
 					'name' => 'team_set',
@@ -45,6 +49,7 @@ $viewdefs['dm_Recycler']['base']['view']['config-system'] = array(
 					'module' => 'Teams',
 					'link' => true,
 					'enabled' => true,
+					'view' => 'edit'
 				),
 			)
 		),

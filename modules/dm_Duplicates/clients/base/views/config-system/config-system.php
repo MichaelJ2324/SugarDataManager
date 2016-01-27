@@ -11,6 +11,7 @@ $viewdefs['dm_Duplicates']['base']['view']['config-system'] = array(
 					'view' => 'edit',
 					'options' => 'dm_conf_owner',
 					'enabled' => true,
+					'view' => 'edit'
 				),
 				array(
 					'name' => 'owner_user',
@@ -21,6 +22,7 @@ $viewdefs['dm_Duplicates']['base']['view']['config-system'] = array(
 					'id_name' => 'default_user_id',
 					'module' => 'Users',
 				   	'link' => true,
+					'view' => 'edit'
 				),
 				array(
 					'name' => 'default_team_type',
@@ -28,6 +30,7 @@ $viewdefs['dm_Duplicates']['base']['view']['config-system'] = array(
 					'label' => 'LBL_DM_DATAMANAGER_DEFAULT_TEAM_TYPE',
 					'options' => 'dm_conf_team',
 					'enabled' => true,
+					'view' => 'edit'
 				),
 				array(
 					'name' => 'team_set',
@@ -38,6 +41,7 @@ $viewdefs['dm_Duplicates']['base']['view']['config-system'] = array(
 					'module' => 'Teams',
 					'link' => true,
 					'enabled' => true,
+					'view' => 'edit'
 				),
 			)
 		),
